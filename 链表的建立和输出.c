@@ -2,19 +2,19 @@
 #include <stdlib.h>
 
 typedef struct Link{
-	int elem;
+	Elemtype data;
 	struct	Link *next;
 }link;
 link *initlink(){
 	int i;
 	link *p=NULL;  
 	link *temp=(link*)malloc(sizeof(link));
-	temp->elem=1;
+	temp->data=1;
 	temp->next=NULL;
 	p=temp;
 	for(i=2;i<5;i++){
 		link *a=(link*)malloc(sizeof(link));
-		a->elem=i;
+		a->data=i;
 		a->next=NULL;
 		temp->next=a;
 		temp=temp->next;
@@ -24,7 +24,7 @@ link *initlink(){
 void display(link *p){
 	link *temp=p;
 	while(temp){
-		printf("%d ",temp->elem);
+		printf("%d ",temp->data);
 		temp=temp->next;
 	}
 	printf("\n");
