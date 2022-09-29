@@ -4,26 +4,26 @@
 
 typedef char elemtype;
 
-typedef struct LinkStack{  //¶¨ÒåÁ´Õ»µÄ½á¹¹Ìå
+typedef struct LinkStack{  //å®šä¹‰é“¾æ ˆçš„ç»“æ„ä½“
   	elemtype data;
   	struct LinkStack *next;
 }link;
 
-link *initStack(link * s){  //³õÊ¼»¯Õ»
+link *initStack(link * s){  //åˆå§‹åŒ–æ ˆ
   	s = (link *)malloc(sizeof(link));
   	s -> next = NULL;
   	return s;
 }
 
-link *PushStack(link * s,elemtype e){  //Ñ¹Õ»
+link *PushStack(link * s,elemtype e){  //å‹æ ˆ
   	link *p =  (link *)malloc(sizeof(link)); 
   	p -> data = e;
   	p -> next = s -> next;  
-  	s -> next = p;  //p½áµã³ÉÎªĞÂµÄÊ×Ôª½Úµã
+  	s -> next = p;  //pç»“ç‚¹æˆä¸ºæ–°çš„é¦–å…ƒèŠ‚ç‚¹
   	return s;
 }
 
-elemtype PopStack(link * s){  //³öÕ»
+elemtype PopStack(link * s){  //å‡ºæ ˆ
   	elemtype e;
 	link *p;
   	p = s -> next;
@@ -41,15 +41,15 @@ int main() {
   	s = initStack(s);
   	fgets(a,100,stdin);
   	l = strlen(a);
-  	for(i=0;i<l;i++){  //±éÀú×Ö·ûÊı×éa
+  	for(i=0;i<l;i++){  //éå†å­—ç¬¦æ•°ç»„a
     	
 		
-			if(a[i]=='('||a[i]=='['){  //Èç¹û±éÀú×Ö·ûÎª×óÀ¨ºÅ£¬ÔòÈëÕ»
+			if(a[i]=='('||a[i]=='['){  //å¦‚æœéå†å­—ç¬¦ä¸ºå·¦æ‹¬å·ï¼Œåˆ™å…¥æ ˆ
       		s = PushStack(s,a[i]);
       		} 
       
-    	else if(a[i]==')'){  //Èç¹û±éÀú×Ö·ûÎªÓÒÀ¨ºÅ£¬Ôòµ¯Õ»£¬¿´Á½À¨ºÅÊÇ·ñÍ¬ÎªĞ¡À¨ºÅ»òÖĞÀ¨ºÅ
-    		if(s -> next != NULL){  //Èç¹û±éÀúµ½ÓÒÀ¨ºÅÊ±£¬Õ»ÄÚÎŞ×óÀ¨ºÅ£¬Ö±½Ó½áÊøÑ­»·
+    	else if(a[i]==')'){  //å¦‚æœéå†å­—ç¬¦ä¸ºå³æ‹¬å·ï¼Œåˆ™å¼¹æ ˆï¼Œçœ‹ä¸¤æ‹¬å·æ˜¯å¦åŒä¸ºå°æ‹¬å·æˆ–ä¸­æ‹¬å·
+    		if(s -> next != NULL){  //å¦‚æœéå†åˆ°å³æ‹¬å·æ—¶ï¼Œæ ˆå†…æ— å·¦æ‹¬å·ï¼Œç›´æ¥ç»“æŸå¾ªç¯
       			if(s -> next != NULL){
         			e = PopStack(s);
         			if(e == '('){continue;}
@@ -71,13 +71,13 @@ int main() {
       		}
       		else{break;}
     	}
-    		else{continue;}  //Èç¹û±éÀúµ½ÆäËü×Ö·û£¬Ôò¼ÌĞø±éÀú
+    		else{continue;}  //å¦‚æœéå†åˆ°å…¶å®ƒå­—ç¬¦ï¼Œåˆ™ç»§ç»­éå†
 	}
  	if(s -> next == NULL && i == l){
- 		printf("À¨ºÅÆ¥Åä"); 
+ 		printf("æ‹¬å·åŒ¹é…\n"); 
 	}
 	else{
-		printf("À¨ºÅ²»Æ¥Åä");
+		printf("æ‹¬å·ä¸åŒ¹é…\n");
 	}
   	return 0;
 }
